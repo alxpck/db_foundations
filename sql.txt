@@ -1,0 +1,55 @@
+#####################################################
+# SELECT  ###########################################
+#####################################################
+
+SELECT * FROM movies;
+-- Select everything from the table named movies
+
+SELECT title, year FROM movies;
+-- Select the colums title and year (in that order) from the table named movies
+
+SELECT movies.title, movies.year FROM movies;
+-- Same as above, just more verbose/exact
+-- Select the colums title and year (in that order) from the table named movies
+
+SELECT * FROM movies WHERE year = 1999;
+-- Select everything from the movies table where the year equals 1999
+
+SELECT * FROM movies WHERE year != 1999;
+-- Select everything from the movies table where the year does NOT equal 1999
+
+SELECT * FROM movies WHERE year > 1999;
+-- Select everything from the movies table where the year is greater than 1999
+
+SELECT * FROM movies WHERE year >= 1999;
+-- Select everything from the movies table where the year is greater than or equal to 1999
+
+SELECT * FROM movies WHERE year < 1999;
+-- Select everything from the movies table where the year is less than 1999
+
+SELECT * FROM movies WHERE year <= 1999;
+-- Select everything from the movies table where the year is less than or equal to 1999
+
+SELECT * FROM movies WHERE year = 1999 AND title = "The Matrix";
+-- Select everything from the movies table where the year is equal to 1999 and the title is equal to The Matrix
+
+SELECT * FROM movies WHERE year = 1998 OR year = 2000;
+-- Select everything from the movies table where the year is equal to 1998 or 2000
+
+SELECT * FROM movies WHERE year BETWEEN 1998 AND 2000;
+-- Select everything from the movies table where the year is between 1998 and 2000
+
+SELECT * FROM movies WHERE title LIKE "godfather";
+-- Select everything from the movies table where the title starts with the word godfather (didn't work because no strings in the title started with godfather)
+
+SELECT * FROM movies WHERE title LIKE "%godfather";
+-- Select everything from the movies table where the title contains the word godfather. The percent sign is a wildcard that allows the string to start with any character(s) before godfather (worked)
+
+SELECT * FROM movies WHERE title LIKE "%godfather%";
+-- Select everything from the movies table where the title contains the word godfather. The percent signs are wildcards that allows the string to start with any character(s) before godfather and end with any character(s) after godfather (worked) 
+-- The LIKE clause can work with strings that are not case sensitive
+
+
+
+
+
