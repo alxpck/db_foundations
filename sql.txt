@@ -69,6 +69,25 @@ SELECT * FROM movies ORDER BY year ASC;
 SELECT * FROM movies ORDER BY year ASC, title DESC;
 -- Select everything from movies and order by the year in ascending order (explicitly stated), and then within each year in descending order by title
 
+#####################################################
+# LIMIT  ############################################
+#####################################################
 
+SELECT * FROM movies LIMIT 10;
+-- Select everything from the movies table and show the first 10 results.
 
+SELECT * FROM movies LIMIT 10 OFFSET 0;
+-- Same as above but explicitly state the offset.
+-- Select everything from the movies table and show the first 10 results (show results 0 - 9)
 
+SELECT * FROM movies LIMIT 10 OFFSET 10;
+-- Select everything from the movies table and show the second 10 results (show results 10 - 19)
+
+SELECT * FROM movies LIMIT 10 OFFSET 20;
+-- Select everything from the movies table and show the third set of 10 results (show results 20 - 29)
+
+SELECT * FROM movies LIMIT 20, 10;
+-- Same as above but written differently. The first number is the offset and the second number is the limit.
+-- Select everything from the movies table and show the third set of 10 results (show results 20 - 29). 
+
+NOTE... some clients automatically add a limit to your query (of say 1000 results). If your dataset has more results than the automatically applied limit you'll get incomplete results
