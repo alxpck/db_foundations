@@ -12,6 +12,10 @@ SELECT movies.title, movies.year FROM movies;
 -- Same as above, just more verbose/exact
 -- Select the colums title and year (in that order) from the table named movies
 
+#####################################################
+# WHERE  ############################################
+#####################################################
+
 SELECT * FROM movies WHERE year = 1999;
 -- Select everything from the movies table where the year equals 1999
 
@@ -48,6 +52,23 @@ SELECT * FROM movies WHERE title LIKE "%godfather";
 SELECT * FROM movies WHERE title LIKE "%godfather%";
 -- Select everything from the movies table where the title contains the word godfather. The percent signs are wildcards that allows the string to start with any character(s) before godfather and end with any character(s) after godfather (worked) 
 -- The LIKE clause can work with strings that are not case sensitive
+
+#####################################################
+# ORDER BY  #########################################
+#####################################################
+
+SELECT * FROM movies ORDER BY year;
+-- Select everything from movies and order by the year in ascending order
+
+SELECT * FROM movies ORDER BY year DESC;
+-- Select everything from movies and order by the year in descending order
+
+SELECT * FROM movies ORDER BY year ASC;
+-- Select everything from movies and order by the year in ascending order (explicitly stated)
+
+SELECT * FROM movies ORDER BY year ASC, title DESC;
+-- Select everything from movies and order by the year in ascending order (explicitly stated), and then within each year in descending order by title
+
 
 
 
