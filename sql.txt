@@ -91,3 +91,13 @@ SELECT * FROM movies LIMIT 20, 10;
 -- Select everything from the movies table and show the third set of 10 results (show results 20 - 29). 
 
 NOTE... some clients automatically add a limit to your query (of say 1000 results). If your dataset has more results than the automatically applied limit you'll get incomplete results
+
+#####################################################
+# NULL  #############################################
+#####################################################
+
+SELECT * FROM movies WHERE year IS NULL;
+-- Select everything from the movies table where the year value is null (non-existant). Note that we use IS instead of EQUALS since null has no value and thus can't be equal to a value.
+
+SELECT * FROM movies WHERE year IS NOT NULL ORDER BY year;
+-- Select everything from the movies table that has a value in the year column and then order the results by the year. This is a way to filter out null values.
