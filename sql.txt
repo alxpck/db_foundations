@@ -1,4 +1,26 @@
 #####################################################
+# ERRORS  ###########################################
+#####################################################
+
+--Troubleshoot errors at http://dev.mysql.com/doc + version
+
+#####################################################
+# SCHEMA  ###########################################
+#####################################################
+--SQL statements can affect both the data in and the schema of the database. 
+
+--A database is a container that holds tables and data. A database keeps groups of tables separate from other groups of tables.
+
+--The terms database and schema can sometimes be used interchangably, for example in the MySQL workbench when you click the icon to create a database it takes you to a "new schema" tab. 
+
+CREATE SCHEMA movies_db_1;
+-- Create a new database (schema)
+
+USE movies_db_1;
+-- Move to/activate/point to/use the database named movies_db_1
+
+
+#####################################################
 # SELECT  ###########################################
 #####################################################
 
