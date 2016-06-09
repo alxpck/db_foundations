@@ -1,4 +1,15 @@
 #####################################################
+# C.R.U.D.  #########################################
+#####################################################
+
+CREATE    |    INSERT
+Read      |    SELECT
+Update    |    UPDDATE
+Delete    |    DELETE
+
+--C.R.U.D. is an accronym for the four ways we work with data (in a CRUD app). Create, Read, Update, and Delete.
+
+#####################################################
 # ERRORS  ###########################################
 #####################################################
 
@@ -55,6 +66,9 @@ CREATE TABLE actors (name VARCHAR(50) NOT NULL);
 
 CREATE TABLE movies (title VARCHAR(200) NOT NULL, year INTEGER NULL);
 -- Create a table called movies with two columns. First column title 200 char strings and doesn't accept NULL values. The second column is year and holds integers will accept a NULL value.
+
+CREATE TABLE movies (title VARCHAR(200) NOT NULL, year INTEGER NULL) ENGINE InnoDB;
+-- Same as above, but also specifies the ENGINE that will run the db/table.
 
 #####################################################
 # SHOW  #############################################
@@ -166,3 +180,25 @@ SELECT * FROM movies WHERE year IS NULL;
 
 SELECT * FROM movies WHERE year IS NOT NULL ORDER BY year;
 -- Select everything from the movies table that has a value in the year column and then order the results by the year. This is a way to filter out null values.
+
+#####################################################
+# INSERT  ###########################################
+#####################################################
+
+INSERT INTO movies VALUES ("Avatar", 2009);
+-- Create a new row of data and place it into the movies table (in the active database) with the values Avatar and 2009.
+
+INSERT INTO movies (title, year) VALUES ("Avatar", 2009);
+-- Same as above, but explicitly states the column and value mapping. This is useful in cases where you've forgotten the order you created the values in.
+
+INSERT INTO movies (year, title) VALUES (2009, "Avatar");
+-- Same as above, but with the col/values in a different order. It can be whatever order you like. That's the power of explicitly mapping the col/values.
+
+INSERT INTO movies (year, title) VALUES (2009, "Avatar"), (NULL, "Avatar 2");
+-- Create two new rows of data and place it into the movies table.
+
+INSERT INTO movies SET title = "Back to the Future", year = 1985;
+
+#####################################################
+# UPDATE  ############################################
+#####################################################
