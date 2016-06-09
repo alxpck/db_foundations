@@ -47,6 +47,22 @@ CREATE TABLE actors (name VARCHAR(50));
 CREATE TABLE movies (title VARCHAR(200), year INTEGER);
 -- Create a table called movies (in the active database) with two columns, the first named title which holds strings up to 200 characters long, the second named year which holds integers
 
+CREATE TEMPORARY TABLE temptable (name VARCHAR(50));
+-- Create a temporary table named temptable that holds 50 character strings. A temporary table only exists durring the current connection and it is automatically dropped once the connection is ended. 
+
+CREATE TABLE actors (name VARCHAR(50) NOT NULL);
+-- Create a table named actors that holds 50 char strings, and will not accept a NULL value. 
+
+CREATE TABLE movies (title VARCHAR(200) NOT NULL, year INTEGER NULL);
+-- Create a table called movies with two columns. First column title 200 char strings and doesn't accept NULL values. The second column is year and holds integers will accept a NULL value.
+
+#####################################################
+# SHOW  #############################################
+#####################################################
+
+SHOW ENGINES;
+-- Show the available engines, including the default engine
+
 #####################################################
 # SELECT  ###########################################
 #####################################################
