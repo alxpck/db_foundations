@@ -42,10 +42,10 @@ CREATE SCHEMA movies_db_3 CHARACTER SET = utf8;
 #####################################################
 
 CREATE TABLE actors (name VARCHAR(50));
--- Create
+-- Create a table called actors (in the active database) with a column named name that is a 
 
-CREATE TABLE movies
-
+CREATE TABLE movies (title VARCHAR(200), year INTEGER);
+-- Create a table called movies (in the active database) with two columns, the first named title which holds strings up to 200 characters long, the second named year which holds integers
 
 #####################################################
 # SELECT  ###########################################
