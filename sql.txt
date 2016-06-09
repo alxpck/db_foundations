@@ -215,3 +215,12 @@ UPDATE movies SET year = 2015 WHERE title = "Avatar 2";
 -- To Turn off Safe Mode: 
 SET SQL_SAFE_UPDATES = 0;
 
+#####################################################
+# DELETE  ###########################################
+#####################################################
+
+DELETE FROM movies;
+-- Deletes all the data (rows) from the movies table.
+
+DELETE FROM movies WHERE title = "Avatar" AND year = 2009;
+-- Delete rows from the movies table where the title equals Avatar and the year equals 2009.
