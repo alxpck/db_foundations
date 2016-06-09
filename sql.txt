@@ -16,9 +16,22 @@
 CREATE SCHEMA movies_db_1;
 -- Create a new database (schema)
 
+CREATE SCHEMA IF NOT EXISTS movies_db_1;
+-- Create a new database (schema) only if one does not already exist with the name movies_db_1. Without the "IF NOT EXISTS" condition CREATE SCHEMA would throw an error if movies_db_1 already existed and would stop the query statement, but if we use "IF NOT EXISTS" and movies_db_1 already exists the query statement gives a warning and continues with the next statement. Errors stop the query, warnings don't stop the query. 
+
 USE movies_db_1;
 -- Move to/activate/point to/use the database named movies_db_1
 
+CREATE DATABASE IF NOT EXISTS movies_db_2;
+-- Similar to the CREATE SCHEMA query. Works the same way (exactly?)
+-- Create a new database (schema) only if one does not already exists with the name movies_db_2.
+
+#####################################################
+# COLLATION  ########################################
+#####################################################
+
+CREATE SCHEMA movies_db_3 CHARACTER SET = utf8;
+-- Create a database named movies_db_3 and set the character collation to utf8. 
 
 #####################################################
 # SELECT  ###########################################
