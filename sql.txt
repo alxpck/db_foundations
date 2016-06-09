@@ -200,5 +200,18 @@ INSERT INTO movies (year, title) VALUES (2009, "Avatar"), (NULL, "Avatar 2");
 INSERT INTO movies SET title = "Back to the Future", year = 1985;
 
 #####################################################
-# UPDATE  ############################################
+# UPDATE  ###########################################
 #####################################################
+
+--UPDATE works a lot like SELECT. You modify it with WHERE, ORDER BY, etc.
+
+UPDATE movies SET year = 2015;
+-- Update the movies table and set the value of the year column to 2015... FOR ALL ROWS. Not what we want to do.
+
+UPDATE movies SET year = 2015 WHERE title = "Avatar 2";
+-- Update the movies talbe and set the value of the year column to 2015, for rows where the title column equals Avatar 2.
+-- A "Safe Mode" error may pop up.
+
+-- To Turn off Safe Mode: 
+SET SQL_SAFE_UPDATES = 0;
+
