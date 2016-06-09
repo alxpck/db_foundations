@@ -26,12 +26,26 @@ CREATE DATABASE IF NOT EXISTS movies_db_2;
 -- Similar to the CREATE SCHEMA query. Works the same way (exactly?)
 -- Create a new database (schema) only if one does not already exists with the name movies_db_2.
 
+DROP DATABASE `movies_db_2`;
+-- Note the back ticks. Are they optional? It works without them in my testing. 
+-- Deletes the database named movies_db_2.
+
 #####################################################
 # COLLATION  ########################################
 #####################################################
 
 CREATE SCHEMA movies_db_3 CHARACTER SET = utf8;
 -- Create a database named movies_db_3 and set the character collation to utf8. 
+
+#####################################################
+# TABLES  ###########################################
+#####################################################
+
+CREATE TABLE actors (name VARCHAR(50));
+-- Create
+
+CREATE TABLE movies
+
 
 #####################################################
 # SELECT  ###########################################
