@@ -30,9 +30,6 @@ CREATE SCHEMA movies_db_1;
 CREATE SCHEMA IF NOT EXISTS movies_db_1;
 -- Create a new database (schema) only if one does not already exist with the name movies_db_1. Without the "IF NOT EXISTS" condition CREATE SCHEMA would throw an error if movies_db_1 already existed and would stop the query statement, but if we use "IF NOT EXISTS" and movies_db_1 already exists the query statement gives a warning and continues with the next statement. Errors stop the query, warnings don't stop the query. 
 
-USE movies_db_1;
--- Move to/activate/point to/use the database named movies_db_1
-
 CREATE DATABASE IF NOT EXISTS movies_db_2;
 -- Similar to the CREATE SCHEMA query. Works the same way (exactly?)
 -- Create a new database (schema) only if one does not already exists with the name movies_db_2.
@@ -76,6 +73,13 @@ CREATE TABLE movies (title VARCHAR(200) NOT NULL, year INTEGER NULL) ENGINE Inno
 
 SHOW ENGINES;
 -- Show the available engines, including the default engine
+
+#####################################################
+# USE  ##############################################
+#####################################################
+
+USE movies_db_1;
+-- Move to/activate/point to/use the database named movies_db_1
 
 #####################################################
 # SELECT  ###########################################
@@ -224,3 +228,4 @@ DELETE FROM movies;
 
 DELETE FROM movies WHERE title = "Avatar" AND year = 2009;
 -- Delete rows from the movies table where the title equals Avatar and the year equals 2009.
+
