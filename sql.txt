@@ -46,7 +46,7 @@ CREATE SCHEMA movies_db_3 CHARACTER SET = utf8;
 -- Create a database named movies_db_3 and set the character collation to utf8. 
 
 #####################################################
-# CREATE TABLES  ####################################
+# CREATE TABLE  #####################################
 #####################################################
 
 CREATE TABLE actors (name VARCHAR(50));
@@ -68,7 +68,7 @@ CREATE TABLE movies (title VARCHAR(200) NOT NULL, year INTEGER NULL) ENGINE Inno
 -- Same as above, but also specifies the ENGINE that will run the db/table.
 
 #####################################################
-# RENAME TABLES  ####################################
+# RENAME TABLE  #####################################
 #####################################################
 
 RENAME TABLE movies TO movies_table;
@@ -80,7 +80,7 @@ RENAME TABLE movies TO movies_table, actors TO actor_table;
 -- Same as above, expressed as a single statement.
 
 #####################################################
-# DROP TABLES  ######################################
+# DROP TABLE  #######################################
 #####################################################
 
 DROP TABLE reviews;
@@ -90,7 +90,7 @@ DROP TABLE reviews IF EXISTS;
 --Drop the reviews table. Throws a warning, but does not stop the SQL script if the the reviews table does not exist.
 
 #####################################################
-# TRUNCATE TABLES  ##################################
+# TRUNCATE TABLE  ###################################
 #####################################################
 
 TRUNCATE TABLE reviews;
@@ -99,6 +99,26 @@ TRUNCATE TABLE reviews;
 TRUNCATE reviews;
 --Same as above, but less explicitly stated. 
 
+
+#####################################################
+# ALTER TABLE  ######################################
+#####################################################
+
+ALTER TABLE movie_table ADD COLUMN genre VARCHAR(100);
+--Alter the structure of the table named movie_table to add a column named genre that holds strings of up to 100 characters.
+
+ALTER TABLE actor_table ADD (pob VARCHAR(100), dob DATE);
+--Alter the structure of the table named actor_table to add two columns (COLUMN is an optional command used to state what you're adding more explicitly). The first column is named pob (place of birth) which holds strings of up to 100 characters. The second column is named dob (date of birth) and holds a date type object.
+
+ALTER TABLE actor_table CHANGE COLUMN pob place_of_birth VARCHAR(100);
+--Alter the structure of the table named actor_table to rename the column named pob to place_of_birth which holds strings of up to 100 characters. 
+--Unlike the ADD keyword the CHANGE keyword can only modify one column at a time. 
+
+ALTER TABLE movie_table CHANGE year year_released YEAR;
+--Alter the structure of the movie_table to rename the column year to year_released (to help avoid confusion with the keyword YEAR which is a DATE type). Note we did not explicitly state that we were changing a column with the COLUMN keyword.
+
+ALTER TABLE actor_table DROP COLUMN date_of_birth;
+--Alter the structure of actor_table to DROP the column (optional keyword) named date_of_birth;
 
 #####################################################
 # SHOW  #############################################
