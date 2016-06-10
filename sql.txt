@@ -46,7 +46,7 @@ CREATE SCHEMA movies_db_3 CHARACTER SET = utf8;
 -- Create a database named movies_db_3 and set the character collation to utf8. 
 
 #####################################################
-# TABLES  ###########################################
+# CREATE TABLES  ####################################
 #####################################################
 
 CREATE TABLE actors (name VARCHAR(50));
@@ -66,6 +66,39 @@ CREATE TABLE movies (title VARCHAR(200) NOT NULL, year INTEGER NULL);
 
 CREATE TABLE movies (title VARCHAR(200) NOT NULL, year INTEGER NULL) ENGINE InnoDB;
 -- Same as above, but also specifies the ENGINE that will run the db/table.
+
+#####################################################
+# RENAME TABLES  ####################################
+#####################################################
+
+RENAME TABLE movies TO movies_table;
+RENAME TABLE actors TO actors_table;
+--Stack two SQL statements to run the two commands one after the other. 
+--Rename the table named movies (in the active database) to movies_table. Similarly, rename actors to actors_table.
+
+RENAME TABLE movies TO movies_table, actors TO actor_table;
+-- Same as above, expressed as a single statement.
+
+#####################################################
+# DROP TABLES  ######################################
+#####################################################
+
+DROP TABLE reviews;
+--Drop the reviews table. Throws an error and stops the SQL script if reviews does not exist. Dropping a table destroys all the data in the table, and destroys the table itself.
+
+DROP TABLE reviews IF EXISTS;
+--Drop the reviews table. Throws a warning, but does not stop the SQL script if the the reviews table does not exist.
+
+#####################################################
+# TRUNCATE TABLES  ##################################
+#####################################################
+
+TRUNCATE TABLE reviews;
+--Drops the table named reviews, destroying all the data inside the table and the table itself, and then automatically recreates a new, empty table named reviews. This command is similar in nature to DROP, but where DROP TABLE deletes the table, TRUNCATE TABLE is more like "drop data"
+
+TRUNCATE reviews;
+--Same as above, but less explicitly stated. 
+
 
 #####################################################
 # SHOW  #############################################
