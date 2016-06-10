@@ -294,3 +294,11 @@ DELETE FROM movies;
 DELETE FROM movies WHERE title = "Avatar" AND year = 2009;
 -- Delete rows from the movies table where the title equals Avatar and the year equals 2009.
 
+#####################################################
+# TERMINOLOGY  ######################################
+#####################################################
+
+::: Normalization :::
+
+Describes the process of setting up a table that contains repeated and redundant data from one column of a table and putting that information into another table
+
