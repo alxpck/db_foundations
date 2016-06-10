@@ -16,7 +16,7 @@ Delete    |    DELETE
 --Troubleshoot errors at http://dev.mysql.com/doc + version
 
 #####################################################
-# SCHEMA  ###########################################
+# SCHEMA/DATABASE ###################################
 #####################################################
 --SQL statements can affect both the data in and the schema of the database. 
 
@@ -44,6 +44,18 @@ DROP DATABASE `movies_db_2`;
 
 CREATE SCHEMA movies_db_3 CHARACTER SET = utf8;
 -- Create a database named movies_db_3 and set the character collation to utf8. 
+
+
+#####################################################
+# DROP SCHEMA/DATABASE  #############################
+#####################################################
+
+DROP DATABASE movie_db_3;
+--Deletes all the tables and data in the database named movie_db_3, also destroys the database itself. 
+
+DROP SCHEMA IF EXISTS movie_db_3;
+--Same as above, uses SCHEMA instead of DATABASE (interchangeable) and uses the optional IF EXISTS keyword to throw a warning if the database does not exists instead of a warning that would stop the script. 
+
 
 #####################################################
 # CREATE TABLE  #####################################
