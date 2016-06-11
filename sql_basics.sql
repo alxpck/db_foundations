@@ -2,10 +2,10 @@
 # C.R.U.D.  #########################################
 #####################################################
 
-CREATE    |    INSERT
-Read      |    SELECT
-Update    |    UPDDATE
-Delete    |    DELETE
+-- CREATE    |    INSERT
+-- Read      |    SELECT
+-- Update    |    UPDDATE
+-- Delete    |    DELETE
 
 --C.R.U.D. is an accronym for the four ways we work with data (in a CRUD app). Create, Read, Update, and Delete.
 
@@ -243,7 +243,7 @@ SELECT * FROM movies LIMIT 20, 10;
 -- Same as above but written differently. The first number is the offset and the second number is the limit.
 -- Select everything from the movies table and show the third set of 10 results (show results 20 - 29). 
 
-NOTE... some clients automatically add a limit to your query (of say 1000 results). If your dataset has more results than the automatically applied limit you'll get incomplete results
+--NOTE... some clients automatically add a limit to your query (of say 1000 results). If your dataset has more results than the automatically applied limit you'll get incomplete results
 
 #####################################################
 # NULL  #############################################
@@ -308,15 +308,15 @@ DELETE FROM movies WHERE title = "Avatar" AND year = 2009;
 ::: Normalization :::
 ---------------------
 
-Describes the process of setting up a table that contains repeated and redundant data from one column of a table and putting that information into another table
+-- Describes the process of setting up a table that contains repeated and redundant data from one column of a table and putting that information into another table
 
 
 ::: Primary Keys ::: 
 --------------------
 
-(example: id)
+# (example: id)
 
-A key used to uniquely define each row in a table.
+-- A key used to uniquely define each row in a table.
 -- Multiple movies can have the same name, so we need something unique like a number to distinguish them.
 -- Can't be NULL
 -- Can't be duplicated
@@ -325,9 +325,9 @@ A key used to uniquely define each row in a table.
 ::: Unique Keys :::
 -------------------
 
-(example: email_address or ssn)
+# (example: email_address or ssn)
 
-Similar to a primary key, but it can be null.
+-- Similar to a primary key, but it can be null.
 -- Enforce uniqueness
 -- Can be null, unless you specify otherwise
 -- Can't be duplicated
@@ -336,9 +336,9 @@ Similar to a primary key, but it can be null.
 ::: Foreign Keys :::
 --------------------
 
-(example: genre_id)
+# (example: genre_id)
 
-Sometimes known as reference keys. These are special keys that describe the relationship between data in two tables.
+-- Sometimes known as reference keys. These are special keys that describe the relationship between data in two tables.
 -- They can be null.
 -- They can be duplicated.
 
