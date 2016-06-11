@@ -299,6 +299,41 @@ DELETE FROM movies WHERE title = "Avatar" AND year = 2009;
 #####################################################
 
 ::: Normalization :::
+---------------------
 
 Describes the process of setting up a table that contains repeated and redundant data from one column of a table and putting that information into another table
+
+
+::: Primary Keys ::: 
+--------------------
+
+(example: id)
+
+A key used to uniquely define each row in a table.
+-- Multiple movies can have the same name, so we need something unique like a number to distinguish them.
+-- Can't be NULL
+-- Can't be duplicated
+
+
+::: Unique Keys :::
+-------------------
+
+(example: email_address or ssn)
+
+Similar to a primary key, but it can be null.
+-- Enforce uniqueness
+-- Can be null, unless you specify otherwise
+-- Can't be duplicated
+
+
+::: Foreign Keys :::
+--------------------
+
+(example: genre_id)
+
+Sometimes known as reference keys. These are special keys that describe the relationship between data in two tables.
+-- They can be null.
+-- They can be duplicated.
+
+
 
