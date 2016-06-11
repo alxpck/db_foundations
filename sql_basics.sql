@@ -137,6 +137,17 @@ ALTER TABLE movie_table CHANGE year year_released YEAR;
 ALTER TABLE actor_table DROP COLUMN date_of_birth;
 --Alter the structure of actor_table to DROP the column (optional keyword) named date_of_birth;
 
+ALTER TABLE movies ADD COLUMN id INTEGER AUTO_INCREMENT PRIMARY KEY FIRST;
+-- Add a column named id to the movies table in the active database. The id column holds integers which auto-increment and which are the primary key in the table. The FIRST keyword makes the id column the first column in the table.
+
+ALTER TABLE movies ADD COLUMN genre_id INTEGER NULL, ADD CONSTRAINT FOREIGN KEY (genre_id) REFERENCES genres(id);
+-- Adds a genre_id column to the movie table in the active database which holds integers which can be null, but which must be one of the values of a foreign key. We specificy the foreign key connection, but saying (genre_id) is a FOREIGN KEY which REFERENCES the id column in the genres table. 
+
+ALTER TABLE movies 
+ADD COLUMN genre_id INTEGER NULL, 
+ADD CONSTRAINT FOREIGN KEY (genre_id) REFERENCES genres(id);
+-- Same as above, but written in multi-line format.
+
 #####################################################
 # SHOW  #############################################
 #####################################################
@@ -274,6 +285,10 @@ INSERT INTO movies (year, title) VALUES (2009, "Avatar"), (NULL, "Avatar 2");
 INSERT INTO movies SET title = "Back to the Future", year = 1985;
 
 INSERT INTO genres (name) VALUES("Sci Fi");
+INSERT INTO genres (name) VALUES("Action");
+INSERT INTO genres (name) VALUES("Musical");
+-- Insert three rows of data in the to the genre's table in the name column, which is a unique key, so we can't repeat values.
+
 
 #####################################################
 # UPDATE  ###########################################
@@ -286,10 +301,23 @@ UPDATE movies SET year = 2015;
 
 UPDATE movies SET year = 2015 WHERE title = "Avatar 2";
 -- Update the movies talbe and set the value of the year column to 2015, for rows where the title column equals Avatar 2.
--- A "Safe Mode" error may pop up.
 
--- To Turn off Safe Mode: 
+-- A "Safe Mode" error may pop up.
 SET SQL_SAFE_UPDATES = 0;
+-- Turns off "safe mode"
+
+SET SQL_SAFE_UPDATES = 1;
+-- Turns on "safe mode"
+
+
+UPDATE movies SET genre_id = 1000 WHERE id = 8 OR id = 9;
+-- Tries to update the data in the movies table, by setting the column genre_id to the value of 1000 where the id of the row equals 8 or 9.
+-- This fails because there is a foreign key constraint which only allows the genre_id column to be a value found in the genres table id column.
+
+UPDATE movies SET genre_id = 1 WHERE id = 8 OR id = 9;
+-- Updates the data in the movies table of the active database and sets the valudes in the genre_id column to 1 in cases where the id column equal 8 or 9. 
+
+
 
 #####################################################
 # DELETE  ###########################################
@@ -305,14 +333,14 @@ DELETE FROM movies WHERE title = "Avatar" AND year = 2009;
 # TERMINOLOGY  ######################################
 #####################################################
 
-::: Normalization :::
----------------------
+# ::: Normalization :::
+# ---------------------
 
 -- Describes the process of setting up a table that contains repeated and redundant data from one column of a table and putting that information into another table
 
 
-::: Primary Keys ::: 
---------------------
+# ::: Primary Keys ::: 
+# --------------------
 
 # (example: id)
 
@@ -322,8 +350,8 @@ DELETE FROM movies WHERE title = "Avatar" AND year = 2009;
 -- Can't be duplicated
 
 
-::: Unique Keys :::
--------------------
+# ::: Unique Keys :::
+# -------------------
 
 # (example: email_address or ssn)
 
@@ -333,8 +361,8 @@ DELETE FROM movies WHERE title = "Avatar" AND year = 2009;
 -- Can't be duplicated
 
 
-::: Foreign Keys :::
---------------------
+# ::: Foreign Keys :::
+# --------------------
 
 # (example: genre_id)
 
