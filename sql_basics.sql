@@ -267,6 +267,54 @@ SELECT * FROM movies WHERE year IS NOT NULL ORDER BY year;
 -- Select everything from the movies table that has a value in the year column and then order the results by the year. This is a way to filter out null values.
 
 #####################################################
+# JOIN  #############################################
+#####################################################
+
+SELECT * FROM movies JOIN genres ON movies.genre_id = genres.id;
+-- Select everything from the movies table and add to the at (join it with) the genres table, the place where they connect (join on) is the the match between the movies table genre_id column and the genres table id column. 
+
+SELECT * FROM movies INNER JOIN genres ON movies.genre_id = genres.id;
+-- Same as above, but more explicitly stated. JOIN defaults to INNER JOIN. This option (not explicitly stated) is what I'll likely use most often. 
+-- This will show me results that have data from both tables.
+-- This will not show me data that doesn't have a match. So if there is a movie without a genre_id associated it won't show up in this JOIN. 
+
+SELECT * FROM movies LEFT OUTER JOIN genres ON movies.genre_id = genres.id;
+-- OUTER JOINS will show all of the results of a table + the results of the other table which match.
+-- In the case of a LEFT outer join the table on the left of the JOIN keyword (movies) will return all of it's data along with the matches from the other table.
+
+SELECT * FROM movies RIGHT OUTER JOIN genres ON movies.genre_id = genres.id;
+-- Similar to the above, a RIGHT outer join will return all of the result of the table to the right of the join keyword (genres) along with the matches from the other table.
+
+SELECT movies.title, genres.name FROM movies LEFT OUTER JOIN genres ON movies.genre_id = genres.id;
+-- Select the titles from the movies table and the genre name from the genres table, return a left outer join, i.e. all of the titles from the movies table, and if they have a genre name show that, otherwise show NULL for the genre name.
+
+SELECT movies.title, genres.name AS genre_name FROM movies LEFT OUTER JOIN genres ON movies.genre_id = genres.id;
+-- Similar to above, but return genres.name with an alias so that it's easier to read the results. This is a useful feature for times when a column name is clear when viewed in isolation, but confussing in a join. 
+
+SELECT movies.title AS movie_title, genres.name AS genre_name FROM movies LEFT OUTER JOIN genres ON movies.genre_id = genres.id;
+-- Similar to above, but aliases movies.title as movie_title 
+
+SELECT movies.title AS movie_title, genres.name AS genre_name 
+FROM movies LEFT OUTER JOIN genres 
+ON movies.genre_id = genres.id;
+-- Same as above, but written in multi-line format
+
+SELECT movies.title AS movie_title, genres.name AS genre_name 
+FROM movies LEFT OUTER JOIN genres 
+ON movies.genre_id = genres.id
+WHERE genres.name IS NOT NULL;
+-- Returns all movie titles that have been assigned a genre
+-- Selects the movie titles from the movies table and joins it with the genre names from the genre table on the match of the genre_id column in the movies table and the id column in the genres table. Aliases the column names of both returned columns. And only returns results in the case where the genre name is not null. 
+
+SELECT movies.title AS movie_title, genres.name AS genre_name 
+FROM movies LEFT OUTER JOIN genres 
+ON movies.genre_id = genres.id
+WHERE genres.id = 1;
+-- Returns all Sci Fi movies
+-- Selects the movie titles (aliased as movie_title) and the genre names (aliased as genre_name) from the movies table along with the matches from the genres table, matching on the movies table genre_id column and the id column of the genres table, in cases where the id column of the genres table equals one. 
+
+
+#####################################################
 # INSERT  ###########################################
 #####################################################
 
