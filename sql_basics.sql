@@ -346,6 +346,15 @@ SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score FROM reviews WHE
 # SUM  ##############################################
 #####################################################
 
+SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score, SUM(score) AS total_score FROM reviews WHERE movie_id = 1;
+-- Similar to the above, but also sums the total score
+
+#####################################################
+# AVERAGE  ##########################################
+#####################################################
+
+SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score, SUM(score) / COUNT(score) AS average_score FROM reviews WHERE movie_id = 1;
+-- You can perform arithmetic within SQL statements. So to find the average, you find the sum and divide it by the count. 
 
 #####################################################
 # INSERT  ###########################################
