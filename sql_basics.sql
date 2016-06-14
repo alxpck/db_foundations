@@ -356,6 +356,9 @@ SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score, SUM(score) AS t
 SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score, SUM(score) / COUNT(score) AS average_score FROM reviews WHERE movie_id = 1;
 -- You can perform arithmetic within SQL statements. So to find the average, you find the sum and divide it by the count. 
 
+SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score, AVG(score) AS average_score FROM reviews WHERE movie_id = 1;
+-- Or use the built in AVG function to get the average.
+
 #####################################################
 # INSERT  ###########################################
 #####################################################
