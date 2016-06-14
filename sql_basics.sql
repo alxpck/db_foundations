@@ -330,6 +330,23 @@ SELECT COUNT(id) FROM reviews WHERE movie_id = 1;
 SELECT COUNT(id) AS review_count FROM reviews WHERE movie_id = 1;
 -- Similar to above but aliased
 
+
+#####################################################
+# MIN/MAX  ##########################################
+#####################################################
+
+SELECT MIN(score) AS minimum_score FROM reviews WHERE movie_id = 1;
+-- Return the minimum score, aliased as minimum_score, from all the results in the reviews table in cases where movie_id = 1.
+
+SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score FROM reviews WHERE movie_id = 1;
+-- Similar to above, but also includes the max score.
+
+
+#####################################################
+# SUM  ##############################################
+#####################################################
+
+
 #####################################################
 # INSERT  ###########################################
 #####################################################
