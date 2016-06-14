@@ -315,6 +315,22 @@ WHERE genres.id = 1;
 
 
 #####################################################
+# COUNT  ############################################
+#####################################################
+
+SELECT * FROM reviews WHERE movie_id = 1;
+-- Select all results from the reviews table in cases where the movie_id equals one. 
+
+SELECT COUNT(*) FROM reviews WHERE movie_id = 1;
+-- Count the number of results returned from selecting all the results from the reviews table in cases where the movie_id equals one. 
+
+SELECT COUNT(id) FROM reviews WHERE movie_id = 1;
+-- Count the number of id rows returned from selecting all the results from the reviews table in cases where the movie_id equals one. 
+
+SELECT COUNT(id) AS review_count FROM reviews WHERE movie_id = 1;
+-- Similar to above but aliased
+
+#####################################################
 # INSERT  ###########################################
 #####################################################
 
