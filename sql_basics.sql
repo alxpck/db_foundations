@@ -412,6 +412,8 @@ GROUP BY movie_id;
 #####################################################
 # HAVING  ###########################################
 #####################################################
+-- HAVING is the WHERE of agregation, of GROUP BY
+
 
 SELECT movie_id,
 MIN(score) AS minimum_score, 
@@ -420,6 +422,15 @@ IFNULL(AVG(score),0) AS average_score
 FROM movies LEFT OUTER JOIN reviews ON movies.id = reviews.movie_id
 GROUP BY movie_id HAVING average > 3;
 -- Use the HAVING keyword to filter the results. In this case, to filter the results so that only those with an average greater than three are displayed. 
+
+SELECT movie_id,
+MIN(score) AS minimum_score, 
+MAX(score) AS maximum_score, 
+IFNULL(AVG(score),0) AS average_score 
+FROM movies LEFT OUTER JOIN reviews ON movies.id = reviews.movie_id
+WHERE year_released > 2000
+GROUP BY movie_id HAVING average > 3;
+-- WHERE clauses are used before GROUP BY, HAVING is used after GROUP BY, both WHERE and HAVING are filter keywords for returning subsets of results. 
 
 #####################################################
 # INSERT  ###########################################
