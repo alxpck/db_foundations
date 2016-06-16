@@ -433,6 +433,60 @@ GROUP BY movie_id HAVING average > 3;
 -- WHERE clauses are used before GROUP BY, HAVING is used after GROUP BY, both WHERE and HAVING are filter keywords for returning subsets of results. 
 
 #####################################################
+# LOWER  ############################################
+#####################################################
+
+SELECT first_name, last_name, email FROM users;
+-- Select the first, last, and email data from the users table.
+
+SELECT first_name, last_name, LOWER(email) FROM users;
+-- User LOWER() function to change all email addresses to lowercase
+
+#####################################################
+# UPPER  ############################################
+#####################################################
+
+SELECT first_name, UPPER(last_name), LOWER(email) FROM users;
+-- User UPPER() function to change all last names to uppercase
+
+#####################################################
+# LENGTH  ###########################################
+#####################################################
+
+SELECT first_name, UPPER(last_name), LOWER(email), LENGTH(username) AS username_length FROM users;
+-- Use the LENGTH() function to get the character count / string length of the username column
+
+SELECT first_name, UPPER(last_name), LOWER(email), LENGTH(username) AS username_length FROM users HAVING username_length < 19;
+-- Only show results having a username_length of < 19... not sure why this is HAVING and now WHERE since there is no GROUP BY in the statement
+
+#####################################################
+# CONCAT  ###########################################
+#####################################################
+
+SELECT CONCAT(first_name, UPPER(last_name)) AS full_name, LOWER(email), LENGTH(username) AS username_length FROM users HAVING username_length < 19;
+-- User CONCAT() function to concatenate the first and last name field... this result is missing a space between the first and last name
+
+SELECT CONCAT(first_name, " ", UPPER(last_name)) AS full_name, LOWER(email), LENGTH(username) AS username_length FROM users HAVING username_length < 19;
+-- Add an empty space to the CONCAT() function to place a space between the first and last names
+
+#####################################################
+# SUBSTRING  ########################################
+#####################################################
+
+SELECT CONCAT(first_name, " ", UPPER(last_name)) AS full_name, 
+SUBSTRING(LOWER(email), 1, 10) AS partial_email,
+LENGTH(username) AS username_length 
+FROM users HAVING username_length < 19;
+-- Use the SUBSTRING() function to trim the email string (for screen size, element size, or privacy). SUBSTRING() takes three arguments: 1) the string 2) the character to start from 3) the character to end at
+-- Note: In SQL the first character is 1, in other languages the first character would be 0
+
+SELECT CONCAT(first_name, " ", UPPER(last_name)) AS full_name, 
+CONCAT(SUBSTRING(LOWER(email), 1, 10), "...") AS partial_email,
+LENGTH(username) AS username_length 
+FROM users HAVING username_length < 19;
+-- Similar to above, but using CONCAT() function with SUBSTRING() to add an ellipses after the substring.
+
+#####################################################
 # INSERT  ###########################################
 #####################################################
 
