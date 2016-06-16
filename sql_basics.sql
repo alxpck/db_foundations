@@ -349,6 +349,7 @@ SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score FROM reviews WHE
 SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score, SUM(score) AS total_score FROM reviews WHERE movie_id = 1;
 -- Similar to the above, but also sums the total score
 
+
 #####################################################
 # AVERAGE  ##########################################
 #####################################################
@@ -358,6 +359,67 @@ SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score, SUM(score) / CO
 
 SELECT MIN(score) AS minimum_score, MAX(score) AS maximum_score, AVG(score) AS average_score FROM reviews WHERE movie_id = 1;
 -- Or use the built in AVG function to get the average.
+
+
+#####################################################
+# GROUP BY  #########################################
+#####################################################
+
+SELECT movie_id,
+MIN(score) AS minimum_score, 
+MAX(score) AS maximum_score, 
+AVG(score) AS average_score 
+FROM reviews;
+-- Get the averages from all of the movies in the movie table, but selecting a normal column (movie_id) instead of a dynamically genderated one (like MIN, MAX, AVG) returns only the frist result in the table (not all of them, and not a randomly selected result)
+
+SELECT movie_id,
+MIN(score) AS minimum_score, 
+MAX(score) AS maximum_score, 
+AVG(score) AS average_score 
+FROM reviews GROUP BY movie_id;
+-- The GROUP BY keyword tells SQL to return all of the movie ids and to group them by movie_id (which groups them into groups of one, because movie_id is a unique key). 
+
+SELECT movie_id,
+MIN(score) AS minimum_score, 
+MAX(score) AS maximum_score, 
+AVG(score) AS average_score 
+FROM movies JOIN reviews ON movies.id = reviews.movie_id
+GROUP BY movie_id;
+-- Use a JOIN statement to return the movie titles next to the reviews
+
+SELECT movie_id,
+MIN(score) AS minimum_score, 
+MAX(score) AS maximum_score, 
+AVG(score) AS average_score 
+FROM movies LEFT OUTER JOIN reviews ON movies.id = reviews.movie_id
+GROUP BY movie_id;
+-- Return all movies, regardless of whether they have reviews or not
+
+
+#####################################################
+# IFNULL  ###########################################
+#####################################################
+
+SELECT movie_id,
+MIN(score) AS minimum_score, 
+MAX(score) AS maximum_score, 
+IFNULL(AVG(score),0) AS average_score 
+FROM movies LEFT OUTER JOIN reviews ON movies.id = reviews.movie_id
+GROUP BY movie_id;
+-- Use the IFNULL function to return an alternate value if the value is null
+
+
+#####################################################
+# HAVING  ###########################################
+#####################################################
+
+SELECT movie_id,
+MIN(score) AS minimum_score, 
+MAX(score) AS maximum_score, 
+IFNULL(AVG(score),0) AS average_score 
+FROM movies LEFT OUTER JOIN reviews ON movies.id = reviews.movie_id
+GROUP BY movie_id HAVING average > 3;
+-- Use the HAVING keyword to filter the results. In this case, to filter the results so that only those with an average greater than three are displayed. 
 
 #####################################################
 # INSERT  ###########################################
