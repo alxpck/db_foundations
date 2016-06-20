@@ -550,6 +550,48 @@ DELETE FROM movies WHERE title = "Avatar" AND year = 2009;
 -- Delete rows from the movies table where the title equals Avatar and the year equals 2009.
 
 #####################################################
+# PERSMISSIONS / USERS  #############################
+#####################################################
+
+-- When hosting a database for use with a website, you want to limit the permissions of the user associated with the web interface so that visitors can't do destructive things to the database. The best practice to create a new user that only has permission to do the bare necessity of things required to make the site function. Leave advanced features to a sudo user that's not connected to the app. 
+
+-- user1 - read access
+-- user2 - read and write access
+-- user3 - modify the schema
+
+
+-- New connection = New user
+
+-- Use GUI to create new connection, "Admin for Remote DB" or something like that. 
+-- hostname: (given by host)
+-- username: admin (or whatever)
+-- pass: *****
+-- port: 3306 (default for MySQL)
+
+GRANT SELECT 
+ON treehouse_movie_db.* 
+TO user1@'%'
+IDENTIFIED BY 'putpasswordhere';
+-- Grant SELECT (read) priviledges, on all tables (dot star = all tables) in the database named treehouse_movie_db, to the user named user1 at a  hostname address with the password. The '%' is a wildcard that allows anyone using the user1 name and the password to connect to the database from any hostname address. 
+-- If you're hosting a website at one address and the database at another, you may want to specify your website address here so that only connections coming from the website hostname will be considered valid. 
+
+FLUSH PRIVILEGES;
+-- Resets and reloads all the privileges of all of the users/connections on this database. We need to do this after creating a user so that the system is aware of the new user. 
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON treehouse_movie_db.*
+TO user2@'%'
+IDENTIFIED BY 'putpasswordhere';
+-- Grant all CRUD options to user2 on treehouse_movie_db.
+
+GRANT ALTER, CREATE, DROP
+ON treehouse_movie_db.*
+TO user3@'%'
+IDENTIFIED BY 'putpasswordhere';
+-- Grant SCHEMA/DDL privileges. 
+
+
+#####################################################
 # TERMINOLOGY  ######################################
 #####################################################
 
