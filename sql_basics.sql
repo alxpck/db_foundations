@@ -592,6 +592,23 @@ IDENTIFIED BY 'putpasswordhere';
 
 
 #####################################################
+# BACKUP / RESTORE / RENAME DB  #####################
+#####################################################
+
+-- MySQL Workbench Admin > Data Export > Export to Self-Contained File
+-- If keyword or version mismatch, MySQL Workbench Preferences > Administration > Path to mysqldump Tool: /usr/local/mysql/bin/mysqldump
+
+-- Using the backup.sql file generated, you can rename the backup by changing the code... 
+
+-- FROM
+CREATE DATABASE IF NOT EXISTS 'treehouse_movie_db'
+USE 'treehouse_movie_db';
+
+-- TO
+CREATE DATABASE IF NOT EXISTS 'treehouse_movie_db_clone'
+USE 'treehouse_movie_db_clone';
+
+#####################################################
 # TERMINOLOGY  ######################################
 #####################################################
 
