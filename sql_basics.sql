@@ -609,6 +609,25 @@ CREATE DATABASE IF NOT EXISTS 'treehouse_movie_db_clone'
 USE 'treehouse_movie_db_clone';
 
 #####################################################
+# INDEXES  ##########################################
+#####################################################
+
+-- Indexes speed up SELECT statements by giving SQL a better understanding of where something is in the database, but they slow down the UPDATE/INSERT statements as you need to write to both the database and the index.
+-- Indexes are very useful, but should be used strategically. Think carefully about where to implement them in the schema. 
+
+CREATE INDEX last_name_idx ON users(last_name);
+-- Create an INDEX called last_name_idx on the users table on the last_name column.
+
+#####################################################
+# EXPLAIN  ##########################################
+#####################################################
+
+-- The EXPLAIN keyword will show what's happening in the database when a query is run. 
+
+EXPLAIN SELECT * FROM users WHERE last_name = "Chalkley";
+-- Show what would happen when this query would run. 
+
+#####################################################
 # TERMINOLOGY  ######################################
 #####################################################
 
